@@ -6,19 +6,21 @@ public class PlayerMovement : MonoBehaviour
     private float moveInput;
     private Rigidbody rb;
     [SerializeField] private float speed = 5f;
-    private Jump jumpScript;
+    private Vector3 counterMovement;
+    [SerializeField] private float counterMovementForce = 0.5f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        jumpScript = GetComponent<Jump>();
         CrownManager.Instance.AddPlayer(gameObject);
     }
 
     void FixedUpdate()
     {
 
-        rb.linearVelocity = new Vector3(moveInput * speed, rb.linearVelocity.y, 0f);
+        counterMovement = new Vector3(-rb.linearVelocity.x * counterMovementForce, 0, rb.linearVelocity.z * counterMovementForce);
+        rb.AddForce(new Vector3(moveInput, 0, 0) * speed + counterMovement);
+
 
 
     }

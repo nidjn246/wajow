@@ -377,8 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3cb41504771c6488e6a23b137884c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 300
   speed: 60
+  counterMovementForce: 5
 --- !u!114 &1221791812249339054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,8 +489,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5447184594534677495}
   serializedVersion: 4
-  m_Mass: 50
-  m_Drag: 5
+  m_Mass: 1
+  m_Drag: 0
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -590,10 +590,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6db1ab75e1fbe41ae0b5787b8fa86e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 250
-  isGrounded: 0
+  jumpForce: 8
+  isGrounded: 1
   isOnWall: 0
-  direction: {x: 0, y: 0, z: 0}
+  amountOfJumps: 2
+  jumpsLeft: 0
 --- !u!1 &7228887496820353401
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +606,6 @@ GameObject:
   - component: {fileID: 5467532011705608437}
   - component: {fileID: 1061169759693758025}
   - component: {fileID: 7195093085674347012}
-  - component: {fileID: 1683171251219942241}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -681,24 +681,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1683171251219942241
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7228887496820353401}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
