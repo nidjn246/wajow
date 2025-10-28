@@ -8,7 +8,7 @@ public class CrownManager : MonoBehaviour
     public GameObject whoHasCrown;
     public bool canSteal = true;
     PlayerInputManager playerInputManager;
-    [SerializeField] List<GameObject> players;
+    [SerializeField] public List<GameObject> players;
     static public CrownManager Instance { get; private set; }
     private void Awake()
     {

@@ -7,10 +7,11 @@ public class StealCrown : MonoBehaviour
     [SerializeField] private float cooldownTime = 3f;
     [SerializeField] private bool isReturning = false;
 
-
+    Jump jumpScript;
     [SerializeField] private float timer;
     void Start()
     {
+        jumpScript = GetComponent<Jump>();
         meshRenderer = GetComponentInChildren<Renderer>();
     }
 
@@ -19,6 +20,16 @@ public class StealCrown : MonoBehaviour
 
 
     {
+        if (CrownManager.Instance.whoHasCrown == this.gameObject)
+        {
+            jumpScript.amountOfJumps = 2;
+
+        }
+        else if (CrownManager.Instance.whoHasCrown != this.gameObject)
+        {
+            jumpScript.amountOfJumps = 1;
+
+        }
         if (isReturning == true)
         {
             timer -= Time.deltaTime;
@@ -47,6 +58,7 @@ public class StealCrown : MonoBehaviour
     {
         if (CrownManager.Instance.whoHasCrown == this.gameObject)
         {
+
             crown.SetActive(true);
         }
         else
@@ -57,6 +69,7 @@ public class StealCrown : MonoBehaviour
 
     void StartCooldown()
     {
+
         CrownManager.Instance.canSteal = false;
         timer = cooldownTime;
         isReturning = true;
@@ -67,12 +80,11 @@ public class StealCrown : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CrownPlayer") && CrownManager.Instance.canSteal == true)
         {
-
             CrownManager.Instance.whoHasCrown = this.gameObject;
             StartCooldown();
             collision.gameObject.tag = "Player";
             gameObject.layer = LayerMask.NameToLayer("Cooldown");
-
+            jumpScript.jumpsLeft = jumpScript.amountOfJumps;
         }
     }
 }
