@@ -65,11 +65,13 @@ public class Jump : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) return;
         ContactPoint contact = collision.contacts[0];
         Vector3 normal = contact.normal;
         if (Vector3.Dot(normal, Vector3.up) > 0.5f)
         {
             isGrounded = true;
+            isOnWall = false;
             jumpsLeft = amountOfJumps;
         }
 
@@ -87,10 +89,8 @@ public class Jump : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            isOnWall = false;
-            rb.linearDamping = 1;
-        }
+        // When leaving any surface, check if there are no other wall contacts
+        isOnWall = false;
     }
+
 }

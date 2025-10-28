@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227935f06ce94c24ba3c37961200fbde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 931203705}
 --- !u!1 &456830391
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: -1
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -619,7 +620,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    m_Reference: {fileID: -7220678298927074519, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_PlayerPrefab: {fileID: 5447184594534677495, guid: 4ea2955e95a1ea248a6626cc02e18888, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
@@ -872,6 +873,7 @@ GameObject:
   - component: {fileID: 912342414}
   - component: {fileID: 912342413}
   - component: {fileID: 912342412}
+  - component: {fileID: 912342416}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -965,6 +967,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &912342416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912342411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6754f5764dc3d3648a83ff4122973b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 1291255877}
+  - {fileID: 1413998356}
+  - {fileID: 673974775}
+  - {fileID: 1933960899}
 --- !u!1 &931203705
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,7 +1002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &931203706
 RectTransform:
   m_ObjectHideFlags: 0

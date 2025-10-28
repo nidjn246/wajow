@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private float timerDuration = 60;
-    private float timer;
+    [SerializeField] private float timer;
+    [SerializeField] GameObject border;
     bool ended = false;
     [SerializeField] GameObject winPlayerScreen;
     private TextMeshProUGUI textBox;
@@ -16,6 +17,7 @@ public class Timer : MonoBehaviour
     {
         textBox = GetComponentInChildren<TextMeshProUGUI>();
         timer = timerDuration;
+
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class Timer : MonoBehaviour
         for (int i = 0; i < CrownManager.Instance.players.Count; i++)
         {
             winPlayerScreen.SetActive(true);
+            border.SetActive(false);
             Destroy(CrownManager.Instance.players[i]);
             Destroy(GameManager.Instance.gameObject);
             Destroy(FindFirstObjectByType<PlayerInputManager>().gameObject);

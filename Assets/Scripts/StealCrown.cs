@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class StealCrown : MonoBehaviour
 {
-    [SerializeField] private GameObject crown;
-    private Renderer meshRenderer;
+    [SerializeField] public GameObject crown;
     [SerializeField] private float cooldownTime = 3f;
     [SerializeField] private bool isReturning = false;
 
     Jump jumpScript;
     [SerializeField] private float timer;
+    private void Awake()
+    {
+
+    }
     void Start()
     {
+
         jumpScript = GetComponent<Jump>();
-        meshRenderer = GetComponentInChildren<Renderer>();
     }
 
     // Update is called once per frame
@@ -48,7 +51,6 @@ public class StealCrown : MonoBehaviour
         if (timer <= 0)
         {
             gameObject.layer = LayerMask.NameToLayer("Player");
-            meshRenderer.material.color = new Color(meshRenderer.material.color.r, meshRenderer.material.color.g, meshRenderer.material.color.b, 1f);
             isReturning = false;
             CrownManager.Instance.canSteal = true;
         }
@@ -73,7 +75,6 @@ public class StealCrown : MonoBehaviour
         CrownManager.Instance.canSteal = false;
         timer = cooldownTime;
         isReturning = true;
-        meshRenderer.material.color = new Color(meshRenderer.material.color.r, meshRenderer.material.color.g, meshRenderer.material.color.b, 0.3f);
     }
 
     private void OnCollisionEnter(Collision collision)
