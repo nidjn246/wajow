@@ -5,11 +5,10 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform[] spawnPoints;
-    private PlayerInputManager PlayerInputManager;
+
 
     private void Start()
     {
-        PlayerInputManager = GetComponent<PlayerInputManager>();
         DontDestroyOnLoad(gameObject);
     }
 

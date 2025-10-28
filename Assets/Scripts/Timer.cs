@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
@@ -8,7 +9,9 @@ public class Timer : MonoBehaviour
     [SerializeField] private float timerDuration = 60;
     private float timer;
     bool ended = false;
+    [SerializeField] GameObject winPlayerScreen;
     private TextMeshProUGUI textBox;
+
     void Start()
     {
         textBox = GetComponentInChildren<TextMeshProUGUI>();
@@ -34,11 +37,13 @@ public class Timer : MonoBehaviour
         ended = true;
         for (int i = 0; i < CrownManager.Instance.players.Count; i++)
         {
-            CrownManager.Instance.players[i].GetComponent<PlayerMovement>().enabled = false;
-            CrownManager.Instance.players[i].GetComponent<Jump>().enabled = false;
-
+            winPlayerScreen.SetActive(true);
+            Destroy(CrownManager.Instance.players[i]);
+            Destroy(GameManager.Instance.gameObject);
+            Destroy(FindFirstObjectByType<PlayerInputManager>().gameObject);
+            textBox.gameObject.SetActive(false);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
         SceneManager.LoadScene("SelectionScreen");
     }

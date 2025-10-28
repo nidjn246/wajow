@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SelectionScreen : MonoBehaviour
 {
     private PlayerInputManager PlayerInputManager;
+    [SerializeField] GameObject startButton;
 
     void Start()
     {
@@ -13,12 +14,14 @@ public class SelectionScreen : MonoBehaviour
 
     private void Update()
     {
-
+        if (PlayerInputManager.playerCount >= 2)
+        {
+            startButton.SetActive(true);
+        }
     }
 
     public void StartGame()
     {
-
         SceneManager.LoadScene("SampleScene");
 
         CrownManager.Instance.StartGame();

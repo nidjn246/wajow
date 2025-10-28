@@ -43,6 +43,7 @@ public class CrownManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (whoHasCrown == null) return;
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
             whoHasCrown.gameObject.tag = "CrownPlayer";
