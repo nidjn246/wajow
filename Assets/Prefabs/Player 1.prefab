@@ -398,6 +398,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e8f8f6e7-79c4-4034-b80a-a915b8c5f695
     m_ActionName: 'Player/Join[/XInputControllerWindows/buttonSouth,/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5976120803293550613}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 578cd467-33f5-45c3-a751-2cc97ea25959
+    m_ActionName: 'Player/MoveWallLeft[/Keyboard/d,/XInputControllerWindows/leftStick/right]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5976120803293550613}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: afed85c2-caa2-4a57-9c4a-2e854d0787d0
+    m_ActionName: 'Player/MoveWallRight[/Keyboard/a,/XInputControllerWindows/leftStick/left]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -443,11 +475,11 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1958197
   m_Height: 1.8991492
@@ -522,6 +554,7 @@ MonoBehaviour:
   isOnWall: 0
   amountOfJumps: 2
   jumpsLeft: 0
+  lookingLeft: 1
 --- !u!65 &468538305006820144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -535,9 +568,9 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

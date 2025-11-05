@@ -11,9 +11,11 @@ public class PlayerMovement : MonoBehaviour
     GameObject skin;
     Jump jumpScript;
     [SerializeField] private float counterMovementForce = 0.5f;
+    private PlayerInput playerInput;
 
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         animator = GetComponentInChildren<Animator>();
         jumpScript = GetComponent<Jump>();
         rb = GetComponent<Rigidbody>();
@@ -32,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
+
+
         animator.SetBool("OnWall", jumpScript.isOnWall);
         counterMovement = new Vector3(-rb.linearVelocity.x * counterMovementForce, 0, rb.linearVelocity.z * counterMovementForce);
         rb.AddForce(new Vector3(moveInput, 0, 0) * speed + counterMovement);

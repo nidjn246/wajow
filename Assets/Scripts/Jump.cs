@@ -11,9 +11,11 @@ public class Jump : MonoBehaviour
     [SerializeField] public int jumpsLeft;
     Vector3 direction;
     private Animator animator;
-    private bool lookingLeft = true;
+    public bool lookingLeft = true;
+    PlayerInput playerInput;
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         CrownManager.Instance.AddPlayer(gameObject);
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
@@ -29,6 +31,7 @@ public class Jump : MonoBehaviour
         {
             lookingLeft = true;
         }
+        Debug.Log(playerInput.currentActionMap.name);
     }
     void removeJump()
     {
@@ -66,6 +69,7 @@ public class Jump : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) return;
+
         ContactPoint contact = collision.contacts[0];
         Vector3 normal = contact.normal;
         if (Vector3.Dot(normal, Vector3.up) > 0.5f)
@@ -85,12 +89,25 @@ public class Jump : MonoBehaviour
             isOnWall = true;
         }
 
+        if (isOnWall == true && lookingLeft == true)
+        {
+            playerInput.actions.FindAction("Move").Disable();
+            playerInput.actions.FindAction("MoveWallLeft").Enable();
+        }
+        else if (isOnWall == true && lookingLeft == false)
+        {
+            playerInput.actions.FindAction("Move").Disable();
+            playerInput.actions.FindAction("MoveWallRight").Enable();
 
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
-        // When leaving any surface, check if there are no other wall contacts
         isOnWall = false;
+        playerInput.actions.FindAction("MoveWallLeft").Disable();
+        playerInput.actions.FindAction("MoveWallRight").Disable();
+        playerInput.actions.FindAction("Move").Enable();
+
     }
 
 }
